@@ -1,0 +1,45 @@
+#!/bin/sh
+
+TARGET=0
+JOB_SCRIPT=""
+
+RESERVE_GET_TARGET=0
+RESERVE_GET_FILE=0
+
+while [ $# -gt 0 ]
+do
+    if [ $RESERVE_GET_TARGET -eq 1 ]; then
+        TARGET=$1
+        RESERVE_GET_TARGET=0
+    elif [ $RESERVE_GET_FILE -eq 1 ]; then
+        JOB_SCRIPT=$1
+        RESERVE_GET_FILE=0
+    else
+        case $1 in
+            -t | --target) RESERVE_GET_TARGET=1 ;;
+            -f | --script-file) RESERVE_GET_FILE=1 ;;
+            -*) echo "error: unrecognized command-line option '$1'"; return 1 ;;
+            *) ;; # DO_NOTHING
+        esac
+    fi
+	shift
+done
+
+case $TARGET in
+    1)#Wisteria/BDEC-01 (Tokyo University, 2021)
+        result=`pjsub $JOB_SCRIPT`
+        echo $result
+        echo $result | awk '{print $6}' > .dsice_pid
+    ;;
+    2)#Flow (Nagoya University, 2020)
+        result=`pjsub $JOB_SCRIPT`
+        echo $result
+        echo $result | awk '{print $6}' > .dsice_pid
+    ;;
+    3)#Genkai (Kyushu University, 2024)
+        result=`pjsub $JOB_SCRIPT`
+        echo $result
+        echo $result | awk '{print $6}' > .dsice_pid
+    ;;
+esac
+

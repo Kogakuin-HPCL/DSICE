@@ -1,0 +1,33 @@
+#! /bin/sh
+
+COMM=""
+MAX_PROCESS=0
+
+OPT_V=0
+OPT_M=0
+MAX_PROCESS_CHECK=0
+
+while [ $# -gt 0 ]
+do
+    if [ $MAX_PROCESS_CHECK -eq 1 ]; then
+        MAX_PROCESS=$1
+        MAX_PROCESS_CHECK=0
+    else
+	    case $1 in 
+		    -v | --version) OPT_V=1 ;;
+            -m | --max_process) OPT_M=1; MAX_PROCESS_CHECK=1 ;;
+            -*) echo "error: unrecognized command-line option '$1'"; return 1 ;;
+            *) COMM="${COMM} $1" ;;
+	    esac
+    fi
+	shift
+done
+
+if [ $OPT_V -eq 1 ]; then
+    dsice_version
+    return 0
+fi
+
+$COMM &
+echo $! > .dsice_pid
+

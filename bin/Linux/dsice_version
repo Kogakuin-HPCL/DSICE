@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "DSICE version 1.0.0"
+

@@ -1,0 +1,29 @@
+#! /bin/sh
+
+KILL_PID=""
+
+OPT_V=0
+OPT_I=0
+
+while [ $# -gt 0 ]
+do
+    case $1 in 
+        -v | --version) OPT_V=1 ;;
+        -i | --show-info) OPT_I=1 ;;
+        -*) echo "error: unrecognized command-line option '$1'"; return 1 ;;
+        *) KILL_PID=$1 ;;
+	    esac
+	shift
+done
+
+if [ $OPT_V -eq 1 ]; then
+    dsice_version
+    return 0
+fi
+
+kill $KILL_PID
+
+if [ $OPT_I -eq 1 ]; then
+    echo "Process ${KILL_PID} is deleted."
+fi
+
