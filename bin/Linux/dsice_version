@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "DSICE version 1.0.0"
+echo "DSICE version 1.0.1"
 

@@ -40,7 +40,7 @@ class CustomInstall(install):
 
 setup(
     name='dsice',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(),
     package_data={'dsice': [shared_library_name]},
     include_package_data=True,

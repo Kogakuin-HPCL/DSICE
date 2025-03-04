@@ -41,6 +41,7 @@ Note: the documentation is now available in Japanese only.
 
 Refer to the [change log](./CHANGELOG.md) for past updates.
 
-### Version 1.0.0 (2025-02-17)
+### Version 1.0.1 (2025-03-04)
 
-Initial release.
+- Bug Fixes
+  - Fixed names of enumerated types used in the C language version

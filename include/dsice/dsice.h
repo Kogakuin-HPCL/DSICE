@@ -9,21 +9,21 @@ typedef size_t dsice_tuner_id;
 /// <summary>
 /// 探索機構を指定する識別子
 /// </summary>
-enum DSICE_EXECUTION_MODE {
+typedef enum {
 	DSICE_MODE_RECOMMENDED,
 	DSICE_MODE_S_IPPE,
 	DSICE_MODE_S_2017,
 	DSICE_MODE_S_2018,
 	DSICE_MODE_P_2024B
-};
+} DSICE_EXECUTION_MODE;
 
 /// <summary>
 /// DSICE のデータベースが保持する性能評価値のふるまいを指定する列挙子
 /// </summary>
-enum DSICE_DATABASE_METRIC_TYPE {
+typedef enum {
 	DSICE_METRIC_TYPE_OVERWRITTEN,
 	DSICE_METRIC_TYPE_AVERAGE
-};
+} DSICE_DATABASE_METRIC_TYPE;
 
 /// <summary>
 /// チューナを生成
