@@ -12,6 +12,7 @@
 
 ``` cpp
 #include <vector>
+#include <cmath>
 #include <dsice_tuner.hpp>
 
 using namespace dsice;
@@ -111,6 +112,27 @@ for (int j = 0; j < 4; j++) {
 }
 ```
 
+なお探索終盤になると，`getSuggestedList()` で取得するリストの要素数が少なくなります．  
+要素数が 4 に満たず，例えば `j == 3` のとき `suggested_list[3]` に対して Segmentation Fault (メモリアクセス違反) となる可能性があるため，実際には次のように工夫してあげる必要があります．
+
+``` cpp
+// 4 か要素数のどちらか小さい値を使う
+int searching_threads_num = ((suggested_list.size() < 4) ? suggested_list.size() : 4);
+
+// 性能評価値を一時的に格納
+std::vector<double> metrics(searching_threads_num);
+
+// CPU コアが 4 の場合に，4 スレッドで並列試行する例
+#pragma omp parallel for num_threads(searching_threads_num)
+for (int j = 0; j < searching_threads_num; j++) {
+
+    double v = func(suggested_list[j][0], suggested_list[j][1]);
+
+    // 候補一覧の順序と一致するように格納
+    metrics[j] = v;
+}
+```
+
 ## 4. 性能評価値を DSICE に渡す
 
 最後に，性能評価値の一覧を DSICE に渡します．
@@ -132,6 +154,7 @@ tuner.setMetricValuesList(metrics);
 
 ``` cpp
 #include <vector>
+#include <cmath>
 #include <dsice_tuner.hpp>
 
 using namespace dsice;
@@ -155,10 +178,12 @@ int main(void) {
 
         std::vector<std::vector<double>> suggested_list = tuner.getSuggestedList();
 
-        std::vector<double> metrics(4);
+        std::size_t searching_threads_num = ((suggested_list.size() < 4) ? suggested_list.size() : 4);
 
-        #pragma omp parallel for num_threads(4)
-        for (int j = 0; j < 4; j++) {
+        std::vector<double> metrics(searching_threads_num);
+
+        #pragma omp parallel for num_threads(searching_threads_num)
+        for (int j = 0; j < searching_threads_num; j++) {
 
             double v = func(suggested_list[j][0], suggested_list[j][1]);
 
