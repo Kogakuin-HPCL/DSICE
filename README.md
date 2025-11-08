@@ -1,5 +1,12 @@
 # DSICE
 
+[![C++](https://img.shields.io/badge/C%2B%2B-20%2B-blue)](https://isocpp.org/)
+[![C](https://img.shields.io/badge/C-ISO%20C-blue)](https://www.open-std.org/JTC1/SC22/WG14/)
+[![Python](https://img.shields.io/badge/Python-3.x-blue)](https://www.python.org)
+[![Version](https://img.shields.io/github/v/tag/Kogakuin-HPCL/DSICE?sort=semver&label=Version)](./CHANGELOG.md)
+[![CMake](https://img.shields.io/badge/CMake-%E2%89%A53.14-blue)](https://cmake.org/)
+[![License](https://img.shields.io/github/license/Kogakuin-HPCL/DSICE)](./LICENSE)
+
 [English](./README.md) | [日本語](./README-ja.md)
 
 ## Introduction
@@ -41,10 +48,10 @@ Note: the documentation is now available in Japanese only.
 
 Refer to the [change log](./CHANGELOG.md) for past updates.
 
-### Version 1.0.1+docs (2025-05-14)
+### Version 1.0.1+docs.license (2025-11-08)
 
 - Other Updates
-  - Bug fixes in the code of the tutorials and additions to the corresponding explanations
-  - Fixed the problem that the compiler option `-lDSICE` is not explained anywhere in the documentation.
+  - Added a license file to clarify project terms.
+  - Added status badges to the README for better visibility.
 - Under Consideration for Improvement
-  - There is no lower limit on the number of elements in the list returned by `getSuggestedList()`, and this may not be sufficient to run in parallel during the latter phases.
+  - There is no lower limit on the number of elements in the list returned by `getSuggestedList()`, and this may not be sufficient to run in parallel during the latter phases. [Ongoing]

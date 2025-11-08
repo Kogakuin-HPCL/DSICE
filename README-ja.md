@@ -1,5 +1,12 @@
 # DSICE
 
+[![C++](https://img.shields.io/badge/C%2B%2B-20%2B-blue)](https://isocpp.org/)
+[![C](https://img.shields.io/badge/C-ISO%20C-blue)](https://www.open-std.org/JTC1/SC22/WG14/)
+[![Python](https://img.shields.io/badge/Python-3.x-blue)](https://www.python.org)
+[![Version](https://img.shields.io/github/v/tag/Kogakuin-HPCL/DSICE?sort=semver&label=Version)](./CHANGELOG.md)
+[![CMake](https://img.shields.io/badge/CMake-%E2%89%A53.14-blue)](https://cmake.org/)
+[![License](https://img.shields.io/github/license/Kogakuin-HPCL/DSICE)](./LICENSE)
+
 [English](README.md) | [日本語](README-ja.md)
 
 ## Introduction
@@ -39,10 +46,10 @@ DSICE は次のプラットフォームでの使用を想定しています．
 
 過去の更新については[変更履歴](CHANGELOG-ja.md)を参照してください．
 
-### Version 1.0.1+docs (2025-05-14)
+### Version 1.0.1+docs.license (2025-11-08)
 
 - その他の更新
-  - チュートリアルのコードに存在するバグの修正，および関連する説明の加筆
-  - ドキュメントのどこにもコンパイル時のオプション `-lDSICE` の記述が無い問題への対処
+  - ライセンスファイルの追加
+  - README へのバッジ追加
 - 改善検討中
-  - `getSuggestedList()` が返すリストの要素数に下限がなく，探索最終版で十分な並列数を確保できない可能性
+  - `getSuggestedList()` が返すリストの要素数に下限がなく，探索最終版で十分な並列数を確保できない可能性 [継続]
